@@ -136,7 +136,7 @@ Também é possível colocar pequenos códigos na prória linha texto. Por exemp
 
 ```{r}
 #| cache: true
-a = rnorm(1e+08)
+a = rnorm(1e+06)
 ```
 
 ## Organização das Partes do projeto
