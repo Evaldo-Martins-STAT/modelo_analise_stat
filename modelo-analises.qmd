@@ -246,5 +246,5 @@ Para uma compreensão maior do mundo do Git, uma excelente opção de livro é *
 
 [^2]: *Happy Git and GitHub for the useR.*https://happygitwithr.com/
 
--   Digite no terminal para se conectar com o git: `usethis::use_git()`. Em seguida, digite:
--    `usethis::use_github()`, para criar o repositório na sua página do Github.
+-   Para se conectar com o git, digite no terminal : `usethis::use_git()`.
+-   Em seguida, digite: `usethis::use_github()`, para criar o repositório no site do Github.
