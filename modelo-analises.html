@@ -8,7 +8,7 @@
 
 <meta name="author" content="Evaldo Silva">
 
-<title>Dcumento modelo para relatórios html</title>
+<title>Documento modelo para relatórios html</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Dcumento modelo para relatórios html</h1>
+      <h1 class="title">Documento modelo para relatórios html</h1>
             <p class="subtitle lead">Aplicação às Aulas de Estatística e Bioestatística</p>
                       </div>
   </div>
@@ -127,7 +127,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Data de Publicação</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">11 de novembro de 2022</p>
+        <p class="date">19 de novembro de 2022</p>
       </div>
     </div>
       
@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div>
     <div class="abstract">
       <div class="abstract-title">Resumo</div>
-      Este documento serve de estrutura básica para todas as análises de dados a serem desenvolvidas ao longo deste curso. Códigos, textos, subtítulos, e muitos outros elementos podem ser reunidos e gerar um formato de saída bem interessante para as suas análises (html, pdf, ppt, word, etc.). Você pode discutir seus resultados e até referenciar outros trabalhos.
+      Este documento serve de estrutura básica para desenvolver análises estatísticas ao longo deste curso, utilizando o sistema Quarto. Quarto® é um sistema de publicação científica e técnica de código aberto construído em Pandoc. Códigos, textos, títulos, subtítulos, imagens e muitos outros elementos podem ser reunidos e produzirem um formato de saída bem interessante para as suas análises (formato html, pdf, ppt, word, etc.). Neste modelo, desenvolvemos para a saída html, por ser mais dinâmicos e permitir flexibilidade e visualaização de resultados mais atrativa. Também você pode discutir seus resultados e até referenciar outros trabalhos.
     </div>
   </div>
   
@@ -160,7 +160,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#exemplo-de-obtenção-de-dados" id="toc-exemplo-de-obtenção-de-dados" class="nav-link" data-scroll-target="#exemplo-de-obtenção-de-dados"><span class="toc-section-number">3.2</span>  Exemplo de obtenção de dados</a></li>
   <li><a href="#local-para-salvar-os-gráficos-gerados" id="toc-local-para-salvar-os-gráficos-gerados" class="nav-link" data-scroll-target="#local-para-salvar-os-gráficos-gerados"><span class="toc-section-number">3.3</span>  Local para salvar os gráficos gerados</a></li>
   </ul></li>
-  <li><a href="#use-o-formato-r-markdown-para-escrever-sua-análise" id="toc-use-o-formato-r-markdown-para-escrever-sua-análise" class="nav-link" data-scroll-target="#use-o-formato-r-markdown-para-escrever-sua-análise"><span class="toc-section-number">4</span>  Use o formato R markdown para escrever sua análise</a></li>
+  <li><a href="#use-o-formato-quarto-para-escrever-sua-análise-.qmd" id="toc-use-o-formato-quarto-para-escrever-sua-análise-.qmd" class="nav-link" data-scroll-target="#use-o-formato-quarto-para-escrever-sua-análise-.qmd"><span class="toc-section-number">4</span>  Use o formato Quarto para escrever sua análise (*.qmd)</a></li>
   <li><a href="#organize-os-dados-de-forma-eficaz-em-uma-planilha" id="toc-organize-os-dados-de-forma-eficaz-em-uma-planilha" class="nav-link" data-scroll-target="#organize-os-dados-de-forma-eficaz-em-uma-planilha"><span class="toc-section-number">5</span>  Organize os dados de forma eficaz em uma planilha</a></li>
   <li><a href="#instale-o-git-para-scripts-de-versão-em-r-markdown" id="toc-instale-o-git-para-scripts-de-versão-em-r-markdown" class="nav-link" data-scroll-target="#instale-o-git-para-scripts-de-versão-em-r-markdown"><span class="toc-section-number">6</span>  Instale o git para scripts de versão em R markdown</a></li>
   </ul>
@@ -176,13 +176,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 
 </div>
-<div class="cell" data-layout-align="center" data-hash="modelo-analises_cache/html/unnamed-chunk-2_5421480a98bcabcc73ba061070694516">
+<div class="cell" data-layout-align="center" data-hash="modelo-analises_cache/html/unnamed-chunk-2_04a63d6b98a0541e06430624d651fd45">
 
 </div>
 <section id="introdução" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">1</span> Introdução</h2>
-<p>Este modelo de análise pode ser utlizado para qualquer análise. A partir dele, vc pode adpatar para outras análises ao longo do curso. Por exemplo, o próprio texto dessa introdução poderá ser substituído por aquele que falae de sua análise estatística específica.</p>
-<p>O Quarto permite que você junte conteúdo e código executável em um documento finalizado. Para aprender mais sobre Quarto veja <a href="https://quarto.org" class="uri">https://quarto.org</a>. Ao clicar no botão <strong><code>Render</code></strong>, será gerado um documento que inclui tanto o conteúdo de etxtos, imagens, resultados quanto a saída do código incorporado.</p>
+<p>Este documento modelo de análise pode ser adaptado para qualquer análise estatística ao longo de um curso de estatística que utilize a Linguagem de Programação R ou até mesmo outras. Por exemplo, este próprio texto dessa introdução pode ser livremente substituído por aquele que fale de sua análise estatística específica.</p>
+<p>Quarto® é um sistema de publicação científica e técnica de código aberto construído em Pandoc<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> e que permite juntar vários tipos de conteúdos e códigos executáveis de programação em um documento finalizado. Para aprender mais sobre Quarto veja <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<p>Quando se clica no botão <strong><code>Render</code></strong>, será gerado um documento que inclui tanto estes conteúdos de textos, imagens, resultados quanto a saída do código incorporado.</p>
+<p>Explicamos como usar esses códigos de execução em Linguagem R, assim como organizar todo o projeto de análise em uma pasta individual.</p>
 </section>
 <section id="código-de-execução" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="código-de-execução"><span class="header-section-number">2</span> Código de execução</h2>
@@ -230,9 +232,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="coloque-os-resultados-em-cache" class="level3" data-number="2.4">
 <h3 data-number="2.4" class="anchored" data-anchor-id="coloque-os-resultados-em-cache"><span class="header-section-number">2.4</span> Coloque os Resultados em cache</h3>
-<p>Às vezes há cálculos que podem demorar muito tempo e rodar o documento pode ser muito demorado, principalmente se você fez pequenas modificações no documento e tem que tricotar novamente o documento. Assim, recomendamos fazer isso:</p>
-<div class="cell" data-layout-align="center" data-hash="modelo-analises_cache/html/unnamed-chunk-5_c9315b27cb59c546534b247c6e43d999">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="fl">1e+08</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Às vezes há cálculos que podem demorar muito tempo e rodar o documento pode ser muito demorado, principalmente se você fez pequenas modificações no documento e tem que tricotar novamente o documento. Assim, recomendamos adotar essa prática. Teste o exemplo abaixo:</p>
+<div class="cell" data-layout-align="center" data-hash="modelo-analises_cache/html/unnamed-chunk-5_425a3e3777ffef16584a2c55a72bfd20">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="fl">1e+06</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -287,9 +289,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
-<section id="use-o-formato-r-markdown-para-escrever-sua-análise" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="use-o-formato-r-markdown-para-escrever-sua-análise"><span class="header-section-number">4</span> Use o formato R markdown para escrever sua análise</h2>
-<p>R markdown é um formato de arquivo R que permite coexistir no mesmo documento:</p>
+<section id="use-o-formato-quarto-para-escrever-sua-análise-.qmd" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="use-o-formato-quarto-para-escrever-sua-análise-.qmd"><span class="header-section-number">4</span> Use o formato Quarto para escrever sua análise (*.qmd)</h2>
+<p>O Quarto, uma uma forma evoluída do R markdown, é um formato de arquivo R que permite coexistir no mesmo documento:</p>
 <ul>
 <li><strong>Códigos</strong></li>
 <li><strong>Resultados de código</strong></li>
@@ -333,9 +335,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="6" class="anchored" data-anchor-id="instale-o-git-para-scripts-de-versão-em-r-markdown"><span class="header-section-number">6</span> Instale o git para scripts de versão em R markdown</h2>
 <p>Para ficar mais organizado, e não ter uma pasta de trabalho saturada com diferentes versões do mesmo script (em R markdown!) é possível fazer versionamento do R Studio, com git.</p>
 <p>Na prática, isso significa que você poderá tirar um instantâneo do seu script a qualquer momento (no final de sua sessão de trabalho ou antes de uma grande mudança, por exemplo). Você deve acompanhar este “instantâneo”, que se chama “commit”, com uma mensagem explicativa (destinada a você).</p>
+<p>Os requistos para você conseguir começar a usar o Git e Github no RStudio são os seguintes:</p>
+<ul>
+<li>Uma conta do GitHub criada;</li>
+<li>R e RStudio instalados</li>
+<li>Git instalado (veja este <a href="https://git-scm.com/">link</a> para download).</li>
+</ul>
+<p>Para uma compreensão maior do mundo do Git, uma excelente opção de livro é <strong>Happy Git and GitHub for the useR</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>,de Jennifer Bryan<strong>.</strong> Para uma rápida configuração do RStudio para usar Git/Github, recomendamos o texto de <a href="https://analisemacro.com.br/data-science/conectando-git-github-e-rstudio-em-3-passos/">Análise Macro</a>. Após realizar a configuração, é muito fácil disponibilizar seu projeto no Github:</p>
+<ul>
+<li>Digite no terminal para se conectar com o git: <code>usethis::use_git()</code>. Em seguida, digite:</li>
+<li><code>usethis::use_github()</code>, para criar o repositório na sua página do Github.</li>
+</ul>
 </section>
 
-</main>
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas de rodapé</h2>
+
+<ol>
+<li id="fn1"><p>https://quarto.org/<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><em>Happy Git and GitHub for the useR.</em>https://happygitwithr.com/<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

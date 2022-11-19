@@ -242,6 +242,9 @@ Os requistos para você conseguir começar a usar o Git e Github no RStudio são
 -   R e RStudio instalados
 -   Git instalado (veja este [link](https://git-scm.com/) para download).
 
-Para uma compreensão maior do mundo do Git, uma excelente opção de livro é **Happy Git and GitHub for the useR**[^2],de Jennifer Bryan**.** Para uma rápida configuração do RStudio para usar Git/Github, recomendamos o texto de [Análise Macro](https://analisemacro.com.br/data-science/conectando-git-github-e-rstudio-em-3-passos/). Após realizar a configuração, é muito fácil disponibilizar seu projeto no Github. Digite no terminal para se conectar com o git: `usethis::use_git()`. Em seguida, digite `usethis::use_github()`, para criar o repositório na sua página do Github.
+Para uma compreensão maior do mundo do Git, uma excelente opção de livro é **Happy Git and GitHub for the useR**[^2],de Jennifer Bryan**.** Para uma rápida configuração do RStudio para usar Git/Github, recomendamos o texto de [Análise Macro](https://analisemacro.com.br/data-science/conectando-git-github-e-rstudio-em-3-passos/). Após realizar a configuração, é muito fácil disponibilizar seu projeto no Github:
 
 [^2]: *Happy Git and GitHub for the useR.*https://happygitwithr.com/
+
+-   Digite no terminal para se conectar com o git: `usethis::use_git()`. Em seguida, digite:
+-    `usethis::use_github()`, para criar o repositório na sua página do Github.
