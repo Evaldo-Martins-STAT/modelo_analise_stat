@@ -1,0 +1,247 @@
+---
+title: "Documento modelo para relatórios html"
+subtitle: "Aplicação às Aulas de Estatística e Bioestatística"
+abstract: Este documento serve de estrutura básica para desenvolver análises estatísticas ao longo deste curso, utilizando o sistema Quarto. Quarto® é um sistema de publicação científica e técnica de código aberto construído em Pandoc. Códigos, textos, títulos, subtítulos, imagens e muitos outros elementos podem ser reunidos e produzirem um formato de saída bem interessante para as suas análises (formato html, pdf, ppt, word, etc.). Neste modelo, desenvolvemos para a saída html, por ser mais dinâmicos e permitir flexibilidade e visualaização de resultados mais atrativa. Também você pode discutir seus resultados e até referenciar outros trabalhos.
+title-block-banner: true
+author: Evaldo Silva
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+format: 
+  html:
+    toc: true
+    toc-location: left
+    code-fold: false
+    number-sections: true
+    theme: journal
+    highlight-style: github
+    mainfont: Times New Roman # cursive, serif, Times New Roman
+crossref:
+  tbl-title: "**Tabela**"
+  tbl-labels: arabic
+  fig-title: '**Figura**'
+  fig-labels: arabic
+  title-delim: "**.**"
+editor: visual
+lang: pt-BR
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+#| echo: false
+
+# Ajuste global para os chunks:
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, 
+											message = FALSE, fig.align = "center",
+                      fig.width = 4, fig.height = 3, 
+                      dev = "png", cache = TRUE,
+											comment = "#>",
+											fig.pos = "!ht", # Previne fig flutuar
+											fig.path = "graficos/") # Local para
+```
+
+```{r}
+#| echo: false
+
+# Carregamento de bibliotecas (ou pacotes), as quais  contêm as funções para realizar tarefas e testes estatístivos:
+
+library(rmarkdown)
+library(tidyverse)
+library(readr)
+library(kableExtra)
+library(psych)
+library(readxl)
+library(pander)
+library(flextable)
+library(reticulate)
+library(flextable)
+library(ggpubr)
+library(ggthemes)
+```
+
+## Introdução
+
+Este documento modelo de análise pode ser adaptado para qualquer análise estatística ao longo de um curso de estatística que utilize a Linguagem de Programação R ou até mesmo outras. Por exemplo, este próprio texto dessa introdução pode ser livremente substituído por aquele que fale de sua análise estatística específica.
+
+Quarto® é um sistema de publicação científica e técnica de código aberto construído em Pandoc[^1] e que permite juntar vários tipos de conteúdos e códigos executáveis de programação em um documento finalizado. Para aprender mais sobre Quarto veja <https://quarto.org>.
+
+[^1]: https://quarto.org/
+
+Quando se clica no botão **`Render`**, será gerado um documento que inclui tanto estes conteúdos de textos, imagens, resultados quanto a saída do código incorporado.
+
+Explicamos como usar esses códigos de execução em Linguagem R, assim como organizar todo o projeto de análise em uma pasta individual.
+
+## Código de execução
+
+Códigos de execução podem ser executados criando os pedaçõs de códigos (Chunks) ao longo do texto que vocês está criado num Documento Quarto. Você pode incorporar código como este abaixo e referenciar cruzadamente as imagens, gráficos ou tabelas carregadas ou geradas pelo código. Por xemplo, a @fig-plot foi o resultado da execução de funções do pacote `ggplot2`. Incrível, não é ?!!
+
+```{r}
+#| warning: false
+#| output-location: column
+#| label: fig-plot
+#| fig-cap: Gráfico de Modelo de Regressão
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4
+
+x = -10:10
+y = x^3 
+df1 = as.data.frame(x, y)
+
+ggplot(df1, aes(x,y)) + 
+	geom_line(aes(col = "Linha"), linewidth = 1.5, linetype = "dashed") +
+	geom_point(aes(col="Pontos"), size = 4)  + theme_classic() + 
+	labs(x = "Titulo eixo x", y = "Título eixo y", col = "") +
+	scale_color_discrete(name = "Tipo de Geom") +
+	theme(legend.position = c(0.85, 0.15)) +
+	theme(axis.title = element_text(size = 16, family = "Serif", color = "darkgreen")) +
+	theme(axis.text = element_text(family = 'serif', face = 'bold', size = 12))
+```
+
+Para visualizar apenas esse chunk, você pode clicar na seta verde no canto superior direito do chunk. Assim, você se certifica se tudo está correndo adequadamente como esperado.
+
+É possível também executar só uma linha, como se faz num script simples do RStudio (nome_arquivo.R) , basta por o curso na linha e teclar `Ctrl + enter`. Para saídas de resultados no console ou na aba Plots, clique na seta ao lando a engrenagem e marque a opção: `Chunk Output in Console`.
+
+### Opções de chunks
+
+Há várias opções de chunks que pode m ser colocadas no quarto. Elas ajudam nas várias formatações possíveis de saídas dos documentos finais. Por exemplo:
+
+-   `eval: false` --- desabilita a impressão do código (somente a saída é exibida).
+-   `include: false` --- Não avalia aquele pedaço de código ( É útuil quando vc só quer testar alguns resultado, mas não quer que saia no relatório final
+-   `label: nome_etiqueta` --- serve para etiquetar o chunk e depois referenciar a sua saída de resultado, como uma tabela, gráfico ou imagem.
+
+### Chunk-teste
+
+Aqui foi incluído um chunk para servir apenas para testes de comandos e saídas de resultados, mas o mesmo não é incluido no documento.
+
+```{r}
+#| include: false
+
+# Este chunk não será incluído na análise. Serve apenas testar comando e resultados. A opção incluse: false deve ser colocada.
+
+
+df2 = data.frame(x, y, z = x^3)
+head(df2)
+
+ggplot(df2) + geom_line(aes(x,y), col = "red", lw = 3) + 
+	geom_line(aes(x, z))
+```
+
+### Códigos em linha
+
+Também é possível colocar pequenos códigos na prória linha texto. Por exemplo, o desvio padrão da variável x do dataframe df1 é de **`r round(sd(df1$x),2)`** .
+
+### Coloque os Resultados em cache
+
+Às vezes há cálculos que podem demorar muito tempo e rodar o documento pode ser muito demorado, principalmente se você fez pequenas modificações no documento e tem que tricotar novamente o documento. Assim, recomendamos adotar essa prática. Teste o exemplo abaixo:
+
+```{r}
+#| cache: true
+a = rnorm(1e+08)
+```
+
+## Organização das Partes do projeto
+
+Seu projeto deve estar contido numa pasta (paz raiz e que dá nome ao projeto), na qual se recomenda conter todos os seus arquivos de código (`*.R, *.Rmd, *.qmd`, etc) e as seguintes subpastas que ajudarão na organização de arquivos:
+
+-   **dados** - Para receber seus arquivos de dados no formato `*.csv`(recomendável) ou quaisquer outros formatos (.xlsx, \*.txt, etc);
+-   **imagens** - Para conter figuras de fora da programação, como logomarcas, fotos, desenhos, etc;
+-   **graficos** - Para conter os gráficos gerados por seus códigos de programação.
+
+### Exemplo de obtenção de imagens
+
+Abaixo vemos a @fig-est-arquivos, a qual ilustra esse modo de organização. Também vemos o código que importa essa imagem a partir da subpasta `imagens`.
+
+```{r}
+#| label: fig-est-arquivos
+#| out-width: "50%"
+#| echo: true
+#| fig-cap: "Estrutura de organização de arquivos num projeto"
+#| fig-align: "center"
+
+knitr::include_graphics(path = "imagens/estrutura-arquivo.png")
+```
+
+### Exemplo de obtenção de dados
+
+Vamos acessar um conjunto de dados (Dataframe) do tipo \*.csv a partir de uma arquivo presente na subpasta `dados`. Os dados da @tbl-acidentes foram organizados numa arquivo excel e depois salvos como arquivo **.csv**. Eles dados correspondem à medidas morfométricas de caranguejos.
+
+```{r}
+#| label: tbl-acidentes
+#| tbl-cap: "Medidas morfométricas de caraguejo Ucides cordatus nas localidades de Ajuruteua e Caratateua - Pará"
+#| tbl-cap-location: margin
+#| tbl-column: body
+#| echo: true
+
+df4 = read_csv2("dados/caranguejo_csv_utf8.csv")
+paged_table(df4) 
+```
+
+### Local para salvar os gráficos gerados
+
+Os gráficos gerados ao longo de seu trabalho vão ser salvos conforme definido acima no primeiro chunk, no fig.path, e também como apreentado mais uma vez abaixo:
+
+```{r}
+#| echo: true
+# Todas as figuras serão salvas no caminho específicado em fig.path
+
+knitr::opts_chunk$set(fig.path = "graficos/")
+```
+
+## Use o formato Quarto para escrever sua análise (\*.qmd)
+
+O Quarto, uma uma forma evoluída do R markdown, é um formato de arquivo R que permite coexistir no mesmo documento:
+
+-   **Códigos**
+-   **Resultados de código**
+-   **Textos**
+
+É um formato que funciona com tags, muito parecido com o html, e que permite gerar relatórios de análise automaticamente. Recomendo que você use sistematicamente esse formato, e não apenas no final da análise para editar o relatório de análise estatística.
+
+É muito mais eficiente realizar a análise de dados neste formato, pois você pode listar os comandos utilizados, os resultados obtidos e comentar sobre eles. Desta forma, você sempre acompanha seu progresso, as decisões que tomou, etc. E no final você pode simplesmente escolher se deseja ou não mostrar certas partes da análise no relatório final.
+
+## Organize os dados de forma eficaz em uma planilha
+
+Agora que você está bem organizado para conduzir sua análise de dados, ainda falta um passo: criar o arquivo de dados!
+
+Esta é uma etapa essencial e, ao adotar algumas regras simples, você evitará perder tempo precioso ao importar ou até mesmo arrancar os cabelos reformatando os dados em R. Os dois pontos principais dessas regras simples são:
+
+-   **Usando o formato tidy conforme @fig-tidy.**
+    -   Trata-se de organizar seus dados com:
+
+        -   uma linha por observação
+
+        -   uma coluna por variável
+
+        -   o valor numérico na interseção de linhas e colunas
+
+```{r}
+#| label: fig-tidy
+#| out-width: "80%"
+#| echo: true
+#| fig-cap: "Forma de organizar um conjuntos de dados organizados"
+#| fig-link: https://r4ds.had.co.nz/tidy-data.html
+#| fig-align: "center"
+
+
+knitr::include_graphics(path = "imagens/tidy.png")
+```
+
+-   **Armazenamento de dados em formato csv.**
+
+O formato csv é recomendado porque não depende de nenhum software específico, ao contrário do formato xlsx que é específico do Excel. Assim, em caso de perda de sua licença do Excel, você ainda poderá acessar seus dados. E da mesma forma, em caso de colaboração, todos poderão abrir um arquivo csv usando softwares gratuitos, como o LibreOffice, por exemplo.
+
+## Instale o git para scripts de versão em R markdown
+
+Para ficar mais organizado, e não ter uma pasta de trabalho saturada com diferentes versões do mesmo script (em R markdown!) é possível fazer versionamento do R Studio, com git.
+
+Na prática, isso significa que você poderá tirar um instantâneo do seu script a qualquer momento (no final de sua sessão de trabalho ou antes de uma grande mudança, por exemplo). Você deve acompanhar este "instantâneo", que se chama "commit", com uma mensagem explicativa (destinada a você).
+
+Os requistos para você conseguir começar a usar o Git e Github no RStudio são os seguintes:
+
+-   Uma conta do GitHub criada;
+-   R e RStudio instalados
+-   Git instalado (veja este [link](https://git-scm.com/) para download).
+
+Para uma compreensão maior do mundo do Git, uma excelente opção de livro é **Happy Git and GitHub for the useR**[^2],de Jennifer Bryan**.** Para uma rápida configuração do RStudio para usar Git/Github, recomendamos o texto de [Análise Macro](https://analisemacro.com.br/data-science/conectando-git-github-e-rstudio-em-3-passos/). Após realizar a configuração, é muito fácil disponibilizar seu projeto no Github. Digite no terminal para se conectar com o git: `usethis::use_git()`. Em seguida, digite `usethis::use_github()`, para criar o repositório na sua página do Github.
+
+[^2]: *Happy Git and GitHub for the useR.*https://happygitwithr.com/
